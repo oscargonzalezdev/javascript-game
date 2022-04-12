@@ -1,67 +1,96 @@
-// This is the main class to manage the game
-class Main {
-    constructor() {
-        this.intervalGame = null;
+class Game {
+    constructor(){
         this.diver = new Diver();
-        this.trashArr = [];
-        this.containerArr = [];
+        this.opponent = new Opponent();
+        this.gameInterval = null;
+        this.opponentsArray = [];
     }
-    play(nameOfTheClass) {
-        this.display(nameOfTheClass);
-        this.diver.moveDiver();
+    play (){
+        this.diver.show();
+        this.diver.move();
+        // this.diver.autoDiving();
+        this.opponent.show();
+        this.opponent.move();
+        this.gameInterval = setInterval(() => {
+            
+        }, 500);
+    }
 
-    }
-    // This Method creates and displays a new DOM elemnt (diver, trash or fish)
-    display(nameOfTheClass) {
-        // create
-        const board = document.getElementById('game-board');
-        const newElement = document.createElement('div');
-        newElement.className = nameOfTheClass;
-        board.appendChild(newElement);
-        // display
-        this.diver.diverElement = newElement;
-        newElement.style.left = this.diver.positionX + "%";
-        newElement.style.bottom = this.diver.positionY + "%";
-        newElement.style.width = this.diver.width + "px";
-        newElement.style.height = this.diver.height + "px";
-    }
+    
 }
-
 // class to manage the diver
 class Diver {
     constructor() {
-        this.name = null;
         this.width = 100;
         this.height = 50;
-        this.positionX = 10;
-        this.positionY = 93;
+        this.positionX = 0;
+        this.positionY = 0;
         this.diverElement = null;
         this.lives = null;
     }
-    // Method to add move funtionality to the diver
-    moveDiver() {
-        document.addEventListener('keydown', (e) => {
+    // this method shows and setup a new DOM element with class 'diver'
+    show() {
+        const board = document.getElementById('game-board');
+        this.diverElement = document.createElement('div');
+        this.diverElement.className = 'diver';
+        board.appendChild(this.diverElement);
+        this.diverElement.style.width = this.width + 'px';
+        this.diverElement.style.height = this.height + 'px';
+        this.diverElement.style.left = this.positionX +'%';
+        this.diverElement.style.top = this.positionY +'%';
+    }
+
+    // Method to add movility to the diver
+    move() {
+        window.addEventListener('keydown', (e) => {
             switch (e.key) {
                 case 'ArrowRight':
-                    this.positionX++;
-                    console.log('key right invoked');
+                    this.diverElement.style.left = this.positionX++ + '%';
+                    this.diverElement.style.left = this.positionX++ + '%';
                     break;
                 case 'ArrowLeft':
-                    this.positionX--;
-                    console.log('key left invoked');
+                    this.diverElement.style.left = this.positionX-- + '%';
+                    this.diverElement.style.left = this.positionX-- + '%';
                     break;
-                // case 'Space':
-                //     game.movePlayer('down');
-                //     break;
+                case ' ':
+                case 'ArrowDown':
+                    this.diverElement.style.top = this.positionY++ + '%';
+                    this.diverElement.style.top = this.positionY++ + '%';
+                    break;
+                case 'ArrowUp':
+                    this.diverElement.style.top = this.positionY-- + '%';
+                    this.diverElement.style.top = this.positionY-- + '%';
+                    break;
             }
         });
-
     }
+    // element moves up automatically
+    // autoDiving() {
+    //     this.positionY--;
+    // }
 }
 
-// class to manage the objects in the sea
-class Objects extends Diver {
-    constructor() {
-        super(type);
+class Opponent {
+    constructor(){
+        this.width = 50;
+        this.height = 50;
+        this.positionX = 90;
+        this.positionY = Math.floor(Math.random() * 90);
+        this.opponentElement = null;
+        this.modifier = 0;
     }
+    show() {
+            const board = document.getElementById('game-board');
+            this.opponentElement = document.createElement('div');
+            this.opponentElement.className = 'opponent';
+            this.opponentElement.style.width = this.width + 'px';
+            this.opponentElement.style.height = this.height + 'px';
+            this.opponentElement.style.left = this.positionX + '%';
+            this.opponentElement.style.top = this.positionY +'%';
+            board.appendChild(this.opponentElement);
+    }
+    move(){
+        this.opponentElement.style.left = this.positionX--;
+    }
+
 }

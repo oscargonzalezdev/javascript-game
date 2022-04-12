@@ -29,19 +29,19 @@
 }
 
 .diver {
-    background-color: red;
     position: absolute;
+    background-color: red;
     z-index: 1;
     /* animation: rotation 5s linear infinite;   */
 }
-/* .obstacle {
-    outline: 5px dotted cyan;
+.opponent {
+    background-color: violet;
     position:absolute;
-    border-radius: 50%;
     z-index: 1;
-    animation: rotation 5s linear infinite;
-    display: table; 
-} */
+    width: 100px;
+    height: 100px;
+    /* animation: rotation 5s linear infinite; */
+}
 
 /* #earth{
     position: absolute;
