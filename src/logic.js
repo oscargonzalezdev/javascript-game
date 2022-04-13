@@ -4,19 +4,28 @@ class Game {
         this.opponent = new Opponent();
         this.gameInterval = null;
         this.opponentsArray = [];
+        this.counter = 0;
     }
     play (){
-        this.diver.show();
-        this.diver.move();
-        // this.diver.autoDiving();
-        this.opponent.show();
-        this.opponent.move();
-        this.gameInterval = setInterval(() => {
-            
+        this.diver.showDiver();
+        this.diver.moveDiver();
+        this.setup('fish');
+        this.setup('shark');
+    }
+    setup(typeOpponent){
+        this.gameInterval = setInterval( () => {
+            this.opponentsArray.forEach(opponent => {
+                this.opponent.moveOpponent(opponent);
+                this.opponent.showOpponent(opponent);
+            });
+            if (this.counter % 10 === 0){
+                // this.opponent.opponentElement.style.left = this.positionX;
+                this.opponent.createOpponent(typeOpponent);
+                this.opponentsArray.push(this.opponent.opponentElement);
+            } 
+            this.counter++;
         }, 500);
     }
-
-    
 }
 // class to manage the diver
 class Diver {
@@ -29,36 +38,32 @@ class Diver {
         this.lives = null;
     }
     // this method shows and setup a new DOM element with class 'diver'
-    show() {
+    showDiver() {
         const board = document.getElementById('game-board');
         this.diverElement = document.createElement('div');
         this.diverElement.className = 'diver';
-        board.appendChild(this.diverElement);
         this.diverElement.style.width = this.width + 'px';
         this.diverElement.style.height = this.height + 'px';
         this.diverElement.style.left = this.positionX +'%';
         this.diverElement.style.top = this.positionY +'%';
+        board.appendChild(this.diverElement);
     }
 
     // Method to add movility to the diver
-    move() {
+    moveDiver() {
         window.addEventListener('keydown', (e) => {
             switch (e.key) {
                 case 'ArrowRight':
                     this.diverElement.style.left = this.positionX++ + '%';
-                    this.diverElement.style.left = this.positionX++ + '%';
                     break;
                 case 'ArrowLeft':
-                    this.diverElement.style.left = this.positionX-- + '%';
                     this.diverElement.style.left = this.positionX-- + '%';
                     break;
                 case ' ':
                 case 'ArrowDown':
                     this.diverElement.style.top = this.positionY++ + '%';
-                    this.diverElement.style.top = this.positionY++ + '%';
                     break;
                 case 'ArrowUp':
-                    this.diverElement.style.top = this.positionY-- + '%';
                     this.diverElement.style.top = this.positionY-- + '%';
                     break;
             }
@@ -74,23 +79,26 @@ class Opponent {
     constructor(){
         this.width = 50;
         this.height = 50;
-        this.positionX = 90;
-        this.positionY = Math.floor(Math.random() * 90);
-        this.opponentElement = null;
-        this.modifier = 0;
-    }
-    show() {
-            const board = document.getElementById('game-board');
-            this.opponentElement = document.createElement('div');
-            this.opponentElement.className = 'opponent';
-            this.opponentElement.style.width = this.width + 'px';
-            this.opponentElement.style.height = this.height + 'px';
-            this.opponentElement.style.left = this.positionX + '%';
-            this.opponentElement.style.top = this.positionY +'%';
-            board.appendChild(this.opponentElement);
-    }
-    move(){
-        this.opponentElement.style.left = this.positionX--;
+        this.positionX = 0;
+        this.positionY = Math.floor(Math.random() * 90) +'%';
+        this.opponentElement = null; 
     }
 
+    createOpponent(typeOpponent) {
+        const board = document.getElementById('game-board');
+        this.opponentElement = document.createElement('div');
+        this.opponentElement.className = typeOpponent;
+        board.appendChild(this.opponentElement);
+    }
+
+    showOpponent(opponent){
+        opponent.style.width = this.width + 'px';
+        opponent.style.height = this.height + 'px';
+        opponent.style.right = this.positionX +'px';
+        opponent.style.top = Math.floor(Math.random() * 90) +'%';
+    }
+
+    moveOpponent(opponent){
+        opponent.style.right = this.positionX++;
+    }
 }

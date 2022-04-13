@@ -6,7 +6,7 @@
 }
 
 #game-board {
-    background-color: blue;
+    background-color:wheat;
     position: absolute;
     height: 600px;
     width: 600px;
@@ -24,23 +24,38 @@
 
 }
 #game-board h1 {
-    color: white;
+    color: black;
     font-size: 40px;
 }
 
 .diver {
     position: absolute;
-    background-color: red;
+    background-color:aquamarine;
     z-index: 1;
     /* animation: rotation 5s linear infinite;   */
 }
-.opponent {
+.fish {
     background-color: violet;
     position:absolute;
     z-index: 1;
-    width: 100px;
-    height: 100px;
+    /* width: 100px;
+    height: 100px; */
     /* animation: rotation 5s linear infinite; */
+}
+.shark {
+    background-color:red;
+    position:absolute;
+    z-index: 1;
+}
+.trash1 {
+    background-color:indigo;
+    position:absolute;
+    z-index: 1;
+}
+.trash2 {
+    background-color:darkkhaki;
+    position:absolute;
+    z-index: 1;
 }
 
 /* #earth{
