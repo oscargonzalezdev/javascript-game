@@ -1,9 +1,9 @@
 class Game {
     constructor(){
         this.diver = new Diver();
-        this.opponent = new Opponent();
+        // this.opponent = new Opponent();
         this.gameInterval = null;
-        this.opponentsArray = [];
+        this.opponentsArray = []; // will store instances of the class Opponent
         this.counter = 0;
     }
     play (){
@@ -14,17 +14,22 @@ class Game {
     }
     setup(typeOpponent){
         this.gameInterval = setInterval( () => {
+
+            // move and draw oponents
             this.opponentsArray.forEach(opponent => {
-                this.opponent.moveOpponent(opponent);
-                this.opponent.showOpponent(opponent);
+                opponent.moveOpponent();
+                opponent.showOpponent();
             });
+
+            // create new oponents
             if (this.counter % 10 === 0){
+                const newOpponent = new Opponent();
                 // this.opponent.opponentElement.style.left = this.positionX;
-                this.opponent.createOpponent(typeOpponent);
-                this.opponentsArray.push(this.opponent.opponentElement);
+                newOpponent.createOpponent(typeOpponent);
+                this.opponentsArray.push(newOpponent);
             } 
             this.counter++;
-        }, 500);
+        }, 200);
     }
 }
 // class to manage the diver
@@ -91,14 +96,15 @@ class Opponent {
         board.appendChild(this.opponentElement);
     }
 
-    showOpponent(opponent){
-        opponent.style.width = this.width + 'px';
-        opponent.style.height = this.height + 'px';
-        opponent.style.right = this.positionX +'px';
-        opponent.style.top = Math.floor(Math.random() * 90) +'%';
+    showOpponent(){
+        this.opponentElement.style.width = this.width + 'px';
+        this.opponentElement.style.height = this.height + 'px';
+        this.opponentElement.style.right = this.positionX +'px';
+        this.opponentElement.style.top = this.positionY +'%';
     }
 
-    moveOpponent(opponent){
-        opponent.style.right = this.positionX++;
+    moveOpponent(){
+        this.positionX++;
+        this.opponentElement.style.right = this.positionX;
     }
 }
