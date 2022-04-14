@@ -4,12 +4,30 @@
     z-index: 0;
     animation: space 1000s linear infinite;
 }
+#displayer {
+    text-align: right;
+    position: absolute;
+    height: 600px;
+    width: 1000px;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    padding: 25px 25px 0 0 ;
+    z-index: 2;
+    max-width: 100%;
+    max-height: 100%;
+}
+#displayer h1{
+    font-size: 30px;
+}
 
 #game-board {
     background-color:wheat;
     position: absolute;
     height: 600px;
-    width: 600px;
+    width: 1000px;
     max-width: 100%;
     max-height: 100%;
     outline: 8px solid whitesmoke;

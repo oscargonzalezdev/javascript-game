@@ -5,7 +5,9 @@ class Game {
         this.gameInterval = null;
         this.opponentsArray = []; // store instances of the class Opponent
         this.score = 0;
+        this.lives = 3;
         this.counter = 0;
+        this.trash = 0;
     }
     // executed when the player press play
     play() {
@@ -16,7 +18,10 @@ class Game {
     // this method manages what happens inside the interval
     setup() {
         this.gameInterval = setInterval(() => {
-            
+            // update values on displayer
+            scoreChild.innerHTML = this.score;
+            trashChild.innerHTML = this.trash;
+            console.log(this.score);
             // move and show oponents
             this.opponentsArray.forEach(opponent => {
                 opponent.moveOpponent();
@@ -60,15 +65,13 @@ class Game {
             diver.y < opp.y + opp.height && diver.height + diver.y > opp.y) {
             switch (opponent.opponentElement.className) {
                 case 'shark':
-                    console.log('game over'); 
-                    clearInterval(this.gameInterval);            
+                    console.log('game over');
                     break;
                 case 'trash1':
                 case 'trash2':
                     opponent.opponentElement.remove();
-                    setTimeout(() => {
-                        this.score += 100;
-                    }, 100);
+                    this.score += 100;
+                    this.trash +=1;
                     break;
                 default:
                     break;
