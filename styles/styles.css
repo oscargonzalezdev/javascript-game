@@ -76,6 +76,45 @@
     z-index: 1;
 }
 
+#startBox {
+    display: block;
+    background-color: black;
+    position: absolute;
+    width: 500px;
+    height: 300px;
+    max-width: 100%;
+    max-height: 100%;
+    outline: 8px solid whitesmoke;
+    border-radius: 5px;
+    color: blanchedalmond;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    text-align: center;
+    z-index: 2;
+}
+#gameOver {
+    display: none;
+    background-color: black;
+    position: absolute;
+    width: 500px;
+    height: 300px;
+    max-width: 100%;
+    max-height: 100%;
+    outline: 8px solid whitesmoke;
+    border-radius: 5px;
+    color: blanchedalmond;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    text-align: center;
+    z-index: 2;
+}
+
 /* #earth{
     position: absolute;
     bottom: 0px;

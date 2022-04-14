@@ -5,7 +5,7 @@ class Game {
         this.gameInterval = null;
         this.opponentsArray = []; // store instances of the class Opponent
         this.score = 0;
-        this.lives = 3;
+        this.health = 100;
         this.counter = 0;
         this.trash = 0;
     }
@@ -21,7 +21,8 @@ class Game {
             // update values on displayer
             scoreChild.innerHTML = this.score;
             trashChild.innerHTML = this.trash;
-            console.log(this.score);
+            healthChild.innerHTML = this.health +' %';
+
             // move and show oponents
             this.opponentsArray.forEach(opponent => {
                 opponent.moveOpponent();
@@ -30,7 +31,7 @@ class Game {
                 this.outside(opponent);
             });
 
-            // create oponents
+            // create opponents
             if (this.counter % 50 === 0) {
                 const newOpponent = new Opponent();
                 newOpponent.createOpponent('fish');
@@ -65,7 +66,11 @@ class Game {
             diver.y < opp.y + opp.height && diver.height + diver.y > opp.y) {
             switch (opponent.opponentElement.className) {
                 case 'shark':
-                    console.log('game over');
+                    if(this.health > 0){
+                        this.health -=5;
+                    } else {
+                        gameOver();
+                    }
                     break;
                 case 'trash1':
                 case 'trash2':
@@ -76,7 +81,6 @@ class Game {
                 default:
                     break;
             }
-            
         }
     }
     // check when elements are outside the game board

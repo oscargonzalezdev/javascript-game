@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diver - JavaScript Game by Oscar Gonzalez</title>
+    <title>The Good Diver - JavaScript Game by Oscar Gonzalez</title>
     <!-- load styles-->
     <link rel="stylesheet" href="./styles/reset.css">
     <link rel="stylesheet" href="./styles/styles.css">
 </head>
 
 <body>
+    <!-- displayer -->
     <div id="container">
         <section id="displayer">
             <div>
@@ -21,18 +21,38 @@
                 <h3 id="level">LEVEL:</h3>
             </div>
             <div>
-                <h3 id="lives">LIVES:</h3>
+                <h3 id="health">HEALTH:</h3>
             </div>
             <div>
                 <h3 id="trash">OCEAN TRASH:</h3>
-            </div>      
+            </div>
         </section>
-        <div id="game-board"><!-- game elements -->    
-            <h1>Test</h1>
+
+        <!-- message boxes -->
+        <section id="startBox">
+            <h1>WELCOME</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit fugit dolore quam assumenda quod
+                illum iusto animi pariatur accusamus, vel rerum est? Cumque nulla nesciunt inventore, voluptas rerum
+                facere ab?</p>
+            <button id="button" onclick="playGame()">PLAY</button>
+        </section>
+        <section id="gameOver">
+            <h1>GAME OVER</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit fugit dolore quam assumenda quod
+                illum iusto animi pariatur accusamus, vel rerum est? Cumque nulla nesciunt inventore, voluptas rerum
+                facere ab?</p>
+            <button id="button" onclick="tryAgain()">TRY AGAIN</button>
+        </section>
+
+        <!-- game elements -->
+        <div id="game-board">
+            <h1>The Good Diver</h1>
         </div>
     </div>
+
     <!-- load JavaScript code -->
     <script src="./src/logic.js"></script>
     <script src="./src/index.js"></script>
 </body>
+
 </html>
