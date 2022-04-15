@@ -3,7 +3,9 @@
 
 ## Description
 
-The Goog Diver is a game consisting of capturing trash from the ocean avoiding being attacked by the sharks.
+The Good Diver is a game about cleaning the ocean.<br>
+In order to earn points the you must capture ocean trash without being attacked by the sharks.<br>
+You can move the diver by using the the arrow keys.
 
 
 ## Built With
