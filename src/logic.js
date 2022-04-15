@@ -113,7 +113,7 @@ class Diver {
     showDiver() {
         const board = document.getElementById('game-board');
         this.diverElement = document.createElement('img');
-        this.diverElement.src = '../resources/images/diver.png'
+        this.diverElement.src = './resources/images/diver.png'
         this.diverElement.className = 'diver';
         this.diverElement.style.width = this.width + '%';
         this.diverElement.style.height = this.height + '%';

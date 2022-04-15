@@ -1,9 +1,9 @@
 /* ----------------------------- SOUNDS ----------------------------- */
-const backgroundSound  = new Audio('../resources/sounds/ambient.mp3');
-const welcomeSound = new Audio ('../resources/sounds/welcome.ogg');
-const fishSound = new Audio('../resources/sounds/fish.wav');
-const trashSound = new Audio('../resources/sounds/trash.wav');
-const sharkSound = new Audio('../resources/sounds/shark.wav');
+const backgroundSound  = new Audio('./resources/sounds/ambient.mp3');
+const welcomeSound = new Audio ('./resources/sounds/welcome.ogg');
+const fishSound = new Audio('./resources/sounds/fish.wav');
+const trashSound = new Audio('./resources/sounds/trash.wav');
+const sharkSound = new Audio('./resources/sounds/shark.wav');
 
 // create intances
 let game = new Game();
