@@ -1,8 +1,17 @@
+/* ----------------------------- SOUNDS ----------------------------- */
+const backgroundSound  = new Audio('../resources/sounds/ambient.mp3');
+const welcomeSound = new Audio ('../resources/sounds/welcome.ogg');
+const fishSound = new Audio('../resources/sounds/fish.wav');
+const trashSound = new Audio('../resources/sounds/trash.wav');
+const sharkSound = new Audio('../resources/sounds/shark.wav');
+
 // create intances
 let game = new Game();
 let diver = new Diver();
 let opponent = new Opponent();
 startBox();
+
+
 
 /* ----------------------------- INFO DISPLAY ----------------------------- */
 
@@ -30,6 +39,7 @@ trashParent.appendChild(trashChild);
 function startBox() {
     const startBox = document.getElementById('startBox');
     startBox.style.display = 'block';
+    welcomeSound.play();
 }
 
 // play game button

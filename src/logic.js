@@ -14,6 +14,8 @@ class Game {
         this.diver.showDiver();
         this.diver.moveDiver();
         this.setup();
+        backgroundSound.play();
+        welcomeSound.pause();
     }
     // this method manages what happens inside the interval
     setup() {
@@ -68,8 +70,11 @@ class Game {
                 case 'shark':
                     if(this.health > 0){
                         this.health -=5;
+                        sharkSound.play();
                     } else {
                         gameOver();
+                        backgroundSound.pause();
+                        welcomeSound.play();
                     }
                     break;
                 case 'trash1':
@@ -77,7 +82,10 @@ class Game {
                     opponent.opponentElement.remove();
                     this.score += 100;
                     this.trash +=1;
+                    trashSound.play();
                     break;
+                case 'fish':
+                    fishSound.play();
                 default:
                     break;
             }
@@ -95,16 +103,18 @@ class Game {
 /* ----------------------------- DIVER CLASS ----------------------------- */
 class Diver {
     constructor() {
-        this.width = 10;
-        this.height = 10;
+        this.width = 15;
+        this.height = 15;
         this.positionX = 0;
         this.positionY = 0;
         this.diverElement = null;
     }
     // this method shows and setup a new DOM element with class 'diver'
     showDiver() {
+
         const board = document.getElementById('game-board');
-        this.diverElement = document.createElement('div');
+        this.diverElement = document.createElement('img');
+        this.diverElement.src = '../resources/images/diver.png'
         this.diverElement.className = 'diver';
         this.diverElement.style.width = this.width + '%';
         this.diverElement.style.height = this.height + '%';

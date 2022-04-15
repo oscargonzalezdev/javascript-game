@@ -1,33 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Play&display=swap');
+body{
+    font-family: 'Play', sans-serif;
+}
 #container {
-    background-color: green;
+    background: linear-gradient(#F4A261, #E9C46A);
     height: 100vh;
     z-index: 0;
-    animation: space 1000s linear infinite;
 }
-#displayer {
-    text-align: right;
-    position: absolute;
-    height: 600px;
-    width: 1000px;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    margin: auto;
-    padding: 25px 25px 0 0 ;
-    z-index: 2;
-    max-width: 100%;
-    max-height: 100%;
-}
-#displayer h1{
+h1 {
     font-size: 30px;
+    margin-bottom: 20px;
+}
+p {
+    margin-bottom: 20px;
+    font-size: 20px;
 }
 
 #game-board {
-    background-color:wheat;
+    background-image: url('../resources/images/background.png');
+    background-repeat: repeat-x;
+    background-size: cover;
     position: absolute;
-    height: 600px;
-    width: 1000px;
+    height: 90%;
+    width: 90%;
     max-width: 100%;
     max-height: 100%;
     outline: 8px solid whitesmoke;
@@ -39,44 +34,102 @@
     bottom: 0;
     margin: auto;
     text-align: center;
+    box-shadow: 25px 25px lightgrey;
+    animation: ocean 100s linear infinite;
+
 
 }
 #game-board h1 {
+    padding-top: 20px;
     color: black;
     font-size: 40px;
 }
-
-.diver {
+#displayer {
+    text-align: right;
     position: absolute;
-    background-color:aquamarine;
-    z-index: 1;
+    height: 90%;
+    width: 90%;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    padding: 25px 25px 0 0 ;
+    z-index: 2;
+    max-width: 100%;
+    max-height: 100%;
+}
+#displayer h1{
+    font-size: 20px;
+    padding-bottom: 10px;
+}
+#score h1 {
+    font-size: 60px;
+}
+.diver {
+    min-width: 10%;
+    position: absolute;
+    z-index: 2;
     /* animation: rotation 5s linear infinite;   */
 }
 .fish {
-    background-color: violet;
+    background-image: url('../resources//images/fish1.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     position:absolute;
     z-index: 1;
-    /* width: 100px;
-    height: 100px; */
-    /* animation: rotation 5s linear infinite; */
+    
 }
 .shark {
-    background-color:red;
+    background-image: url('../resources/images/shark1.gif');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     position:absolute;
-    z-index: 1;
+    z-index: 3;
 }
 .trash1 {
-    background-color:indigo;
+    background-image: url('../resources/images/trash3.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     position:absolute;
     z-index: 1;
+    animation: rotation 5s linear infinite;
 }
 .trash2 {
-    background-color:darkkhaki;
+    background-image: url('../resources/images/trash2.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     position:absolute;
-    z-index: 1;
+    z-index: 2;
+    animation: rotation 5s linear infinite;
 }
 
-#startBox {
+.btn {
+    background-color:cyan ;
+    height: 50px;
+    width: 100px;
+    outline-color: transparent;
+    outline-style:solid;
+    box-shadow: 0 0 0 2px whitesmoke;
+    transition: 0.7s;
+    cursor: pointer;
+}
+#startBox img {
+    height: 80px;
+    object-fit: contain;
+}
+.flex-row{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content:space-evenly;
+}
+.messageBox{
+    padding: 30px;
     display: block;
     background-color: black;
     position: absolute;
@@ -93,47 +146,27 @@
     bottom: 0;
     margin: auto;
     text-align: center;
-    z-index: 2;
+    z-index: 4;
 }
+
 #gameOver {
+    z-index: 4;
     display: none;
-    background-color: black;
-    position: absolute;
-    width: 500px;
-    height: 300px;
-    max-width: 100%;
-    max-height: 100%;
-    outline: 8px solid whitesmoke;
-    border-radius: 5px;
-    color: blanchedalmond;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    margin: auto;
-    text-align: center;
-    z-index: 2;
+}
+#startBox {
+    z-index: 4;
+}
+#gameOver img{
+    width: auto;
+}
+#gameOver p{
+    text-align: justify;
+    width: auto;
 }
 
-/* #earth{
-    position: absolute;
-    bottom: 0px;
-    max-width: 500px;
-
-    -webkit-filter:
-    drop-shadow(0 -6mm 6mm rgb(160, 0, 210))
-    brightness(1);
-
-    filter:
-    drop-shadow(0 -6mm 6mm rgb(160, 0, 210))
-    brightness(1);
-    z-index: -1;
-} */
-
-/* animations */
-/* @keyframes space {
+ @keyframes ocean {
     to {
-            background-position: 2000% 2000%;
+            background-position: 100% 2000%;
         }
     }
     @keyframes rotation {
@@ -141,6 +174,6 @@
           transform: rotate(0deg);
         }
         to {
-          transform: rotate(359deg);
+          transform: rotate(360deg);
         }
-      } */
+      }
