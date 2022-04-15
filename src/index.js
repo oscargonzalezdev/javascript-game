@@ -11,8 +11,6 @@ let diver = new Diver();
 let opponent = new Opponent();
 startBox();
 
-
-
 /* ----------------------------- INFO DISPLAY ----------------------------- */
 
 // create tag elements in the DOM
@@ -49,14 +47,14 @@ function playGame(){
     game.play();
 }
 
-// game over box
+// show game over box
 function gameOver(){
     clearInterval(game.gameInterval);
     const gameOver = document.getElementById('gameOver');
     gameOver.style.display = 'block';
 }
 
-// try again box
+// realoads the website
 function tryAgain(){
     window.location.reload();
 }

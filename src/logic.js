@@ -111,7 +111,6 @@ class Diver {
     }
     // this method shows and setup a new DOM element with class 'diver'
     showDiver() {
-
         const board = document.getElementById('game-board');
         this.diverElement = document.createElement('img');
         this.diverElement.src = '../resources/images/diver.png'
@@ -155,21 +154,21 @@ class Opponent {
         this.opponentElement = null;
         this.counter = 0;
     }
-
+    // create a new opponent
     createOpponent(typeOpponent) {
         const board = document.getElementById('game-board');
         this.opponentElement = document.createElement('div');
         this.opponentElement.className = typeOpponent;
         board.appendChild(this.opponentElement);
     }
-
+    // add size and position to opponents
     showOpponent() {
         this.opponentElement.style.width = this.width + '%';
         this.opponentElement.style.height = this.height + '%';
         this.opponentElement.style.left = this.positionX + '%';
         this.opponentElement.style.top = this.positionY + '%';
     }
-
+    // allows opponents to move
     moveOpponent() {
         this.positionX--;
         this.opponentElement.style.left = this.positionX;
