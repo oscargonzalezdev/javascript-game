@@ -21,52 +21,52 @@ class Game {
     setup() {
         this.gameInterval = setInterval(() => {
             // create opponents
-            if (this.counter % 12 === 0) {
+            if (this.counter % 20 === 0) {
                 const newOpponent = new Opponent();
                 newOpponent.createOpponent('fish1');
                 this.opponentsArray.push(newOpponent);
             }
-            if (this.counter % 22 === 0) {
+            if (this.counter % 40 === 0) {
                 const newOpponent = new Opponent();
                 newOpponent.createOpponent('fish2');
                 this.opponentsArray.push(newOpponent);
             }
-            if (this.counter % 33 === 0) {
+            if (this.counter % 60 === 0) {
                 const newOpponent = new Opponent();
                 newOpponent.createOpponent('fish3');
                 this.opponentsArray.push(newOpponent);
             }
-            if (this.counter % 44 === 0) {
+            if (this.counter % 80 === 0) {
                 const newOpponent = new Opponent();
                 newOpponent.createOpponent('fish4');
                 this.opponentsArray.push(newOpponent);
             }
-            if (this.counter % 55 === 0) {
+            if (this.counter % 100 === 0) {
                 const newOpponent = new Opponent();
                 newOpponent.createOpponent('fish5');
                 this.opponentsArray.push(newOpponent);
             }
-            if (this.counter % 25 === 0) {
+            if (this.counter % 55 === 0) {
                 const newOpponent = new Opponent();
                 newOpponent.createOpponent('shark1');
                 this.opponentsArray.push(newOpponent);
             }
-            if (this.counter % 50 === 0) {
+            if (this.counter % 105 === 0) {
                 const newOpponent = new Opponent();
                 newOpponent.createOpponent('shark2');
                 this.opponentsArray.push(newOpponent);
             }
-            if (this.counter % 9 === 0) {
+            if (this.counter % 24 === 0) {
                 const newOpponent = new Opponent();
                 newOpponent.createOpponent('trash1');
                 this.opponentsArray.push(newOpponent);
             }
-            if (this.counter % 28 === 0) {
+            if (this.counter % 63 === 0) {
                 const newOpponent = new Opponent();
                 newOpponent.createOpponent('trash2');
                 this.opponentsArray.push(newOpponent);
             }
-            if (this.counter % 41 === 0) {
+            if (this.counter % 97 === 0) {
                 const newOpponent = new Opponent();
                 newOpponent.createOpponent('trash3');
                 this.opponentsArray.push(newOpponent);
@@ -164,17 +164,28 @@ class Diver {
         window.addEventListener('keydown', (e) => {
             switch (e.key) {
                 case 'ArrowRight':
-                    this.diverElement.style.left = this.positionX++ * 3 + '%';
+                    if(this.diverElement.style.left < '90%'){
+                        this.diverElement.className = 'diver';
+                        this.diverElement.style.left = this.positionX++ * 3 + '%';
+                    }
                     break;
                 case 'ArrowLeft':
+                    if(this.diverElement.style.left > '0%'){
+                    this.diverElement.className = 'diverLeft';
                     this.diverElement.style.left = this.positionX-- * 3 + '%';
+                    }
                     break;
                 case ' ':
                 case 'ArrowDown':
+                    
+                    if(this.diverElement.style.top < '90%'){
                     this.diverElement.style.top = this.positionY++ * 3 + '%';
+                    }
                     break;
                 case 'ArrowUp':
+                    if(this.diverElement.style.top > '0%'){
                     this.diverElement.style.top = this.positionY-- * 3 + '%';
+                    }
                     break;
             }
         });

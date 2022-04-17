@@ -41,7 +41,7 @@ p {
     bottom: 0;
     margin: auto;
     box-shadow: 25px 25px lightgrey;
-    animation: ocean 100s linear infinite;
+    animation: ocean 50s linear infinite;
 }
 #game-board h1 {
     text-align: center;
@@ -57,13 +57,22 @@ p {
 #displayer h1{
     padding-bottom: 10px;
 }
+
 .diver {
     position: absolute;
     z-index: 2;
 }
+
+.diverLeft {
+    position: absolute;
+    z-index: 2;
+    transform:scale(-1,1);
+}
+
 .fish1, .fish2, .fish3, .fish4, .fish5, .shark1, .shark2, .trash1, .trash2, .trash3 {
     position:absolute;
 }
+
 .trash1, .trash2, .trash3 {
     animation: rotation 5s linear infinite;
     -webkit-filter:
