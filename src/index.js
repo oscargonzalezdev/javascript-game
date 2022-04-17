@@ -19,16 +19,16 @@ scoreChild.classList.add("finalScore");
 const scoreParent = document.getElementById("score");
 scoreParent.appendChild(scoreChild);
 
-const levelChild = document.createElement("h1");
+const levelChild = document.createElement("h2");
 const levelParent = document.getElementById("level");
 levelParent.appendChild(levelChild);
 levelChild.innerHTML = 1;
 
-const healthChild = document.createElement("h1");
+const healthChild = document.createElement("h2");
 const healthParent = document.getElementById("health");
 healthParent.appendChild(healthChild);
 
-const trashChild = document.createElement("h1");
+const trashChild = document.createElement("h2");
 const trashParent = document.getElementById("trash");
 trashParent.appendChild(trashChild);
 

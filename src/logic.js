@@ -20,6 +20,57 @@ class Game {
     // this method manages what happens inside the interval
     setup() {
         this.gameInterval = setInterval(() => {
+            // create opponents
+            if (this.counter % 12 === 0) {
+                const newOpponent = new Opponent();
+                newOpponent.createOpponent('fish1');
+                this.opponentsArray.push(newOpponent);
+            }
+            if (this.counter % 22 === 0) {
+                const newOpponent = new Opponent();
+                newOpponent.createOpponent('fish2');
+                this.opponentsArray.push(newOpponent);
+            }
+            if (this.counter % 33 === 0) {
+                const newOpponent = new Opponent();
+                newOpponent.createOpponent('fish3');
+                this.opponentsArray.push(newOpponent);
+            }
+            if (this.counter % 44 === 0) {
+                const newOpponent = new Opponent();
+                newOpponent.createOpponent('fish4');
+                this.opponentsArray.push(newOpponent);
+            }
+            if (this.counter % 55 === 0) {
+                const newOpponent = new Opponent();
+                newOpponent.createOpponent('fish5');
+                this.opponentsArray.push(newOpponent);
+            }
+            if (this.counter % 25 === 0) {
+                const newOpponent = new Opponent();
+                newOpponent.createOpponent('shark1');
+                this.opponentsArray.push(newOpponent);
+            }
+            if (this.counter % 50 === 0) {
+                const newOpponent = new Opponent();
+                newOpponent.createOpponent('shark2');
+                this.opponentsArray.push(newOpponent);
+            }
+            if (this.counter % 9 === 0) {
+                const newOpponent = new Opponent();
+                newOpponent.createOpponent('trash1');
+                this.opponentsArray.push(newOpponent);
+            }
+            if (this.counter % 28 === 0) {
+                const newOpponent = new Opponent();
+                newOpponent.createOpponent('trash2');
+                this.opponentsArray.push(newOpponent);
+            }
+            if (this.counter % 41 === 0) {
+                const newOpponent = new Opponent();
+                newOpponent.createOpponent('trash3');
+                this.opponentsArray.push(newOpponent);
+            }            
             // update values on displayer
             scoreChild.innerHTML = this.score;
             trashChild.innerHTML = this.trash;
@@ -27,35 +78,14 @@ class Game {
 
             // move and show oponents
             this.opponentsArray.forEach(opponent => {
-                opponent.moveOpponent();
                 opponent.showOpponent();
+                opponent.moveOpponent();
                 this.collision(opponent);
                 this.outside(opponent);
             });
 
-            // create opponents
-            if (this.counter % 50 === 0) {
-                const newOpponent = new Opponent();
-                newOpponent.createOpponent('fish');
-                this.opponentsArray.push(newOpponent);
-            }
-            else if (this.counter % 40 === 0) {
-                const newOpponent = new Opponent();
-                newOpponent.createOpponent('shark');
-                this.opponentsArray.push(newOpponent);
-            }
-            else if (this.counter % 30 === 0) {
-                const newOpponent = new Opponent();
-                newOpponent.createOpponent('trash1');
-                this.opponentsArray.push(newOpponent);
-            }
-            else if (this.counter % 20 === 0) {
-                const newOpponent = new Opponent();
-                newOpponent.createOpponent('trash2');
-                this.opponentsArray.push(newOpponent);
-            }
             this.counter++;
-        }, 150);
+        }, 100);
     }
 
     // detects collisions between diver and opponents
@@ -67,9 +97,10 @@ class Game {
         if (diver.x < opp.x + opp.width && diver.x + diver.width > opp.x &&
             diver.y < opp.y + opp.height && diver.height + diver.y > opp.y) {
             switch (opponent.opponentElement.className) {
-                case 'shark':
+                case 'shark1':
+                case 'shark2':
                     if(this.health > 0){
-                        this.health -=5;
+                        this.health -=4;
                         sharkSound.play();
                     } else {
                         gameOver();
@@ -78,22 +109,30 @@ class Game {
                     }
                     break;
                 case 'trash1':
-                case 'trash2':
                     opponent.opponentElement.remove();
-                    this.score += 100;
-                    this.trash +=1;
+                    this.score += 11;
+                    this.trash += 1;
                     trashSound.play();
                     break;
-                case 'fish':
-                    fishSound.play();
-                default:
+                case 'trash2':
+                    opponent.opponentElement.remove();
+                    this.score += 5;
+                    this.trash += 1;
+                    trashSound.play();
+                    break;
+
+                case 'trash3':
+                    opponent.opponentElement.remove();
+                    this.score += 50;
+                    this.trash += 1;
+                    trashSound.play();
                     break;
             }
         }
     }
     // check when elements are outside the game board
     outside(opponent) {
-        if (opponent.positionX < 0) {
+        if (opponent.positionX < -20) {
             this.opponentsArray.shift();
             opponent.opponentElement.remove();
             // console.log('element is outside');
@@ -103,8 +142,7 @@ class Game {
 /* ----------------------------- DIVER CLASS ----------------------------- */
 class Diver {
     constructor() {
-        this.width = 15;
-        this.height = 15;
+        this.width = 10;
         this.positionX = 0;
         this.positionY = 0;
         this.diverElement = null;
@@ -115,8 +153,7 @@ class Diver {
         this.diverElement = document.createElement('img');
         this.diverElement.src = './resources/images/diver.png'
         this.diverElement.className = 'diver';
-        this.diverElement.style.width = this.width + '%';
-        this.diverElement.style.height = this.height + '%';
+        this.diverElement.style.width = this.width + 'vw';
         this.diverElement.style.left = this.positionX + '%';
         this.diverElement.style.top = this.positionY + '%';
         board.appendChild(this.diverElement);
@@ -127,17 +164,17 @@ class Diver {
         window.addEventListener('keydown', (e) => {
             switch (e.key) {
                 case 'ArrowRight':
-                    this.diverElement.style.left = this.positionX++ * 2 + '%';
+                    this.diverElement.style.left = this.positionX++ * 3 + '%';
                     break;
                 case 'ArrowLeft':
-                    this.diverElement.style.left = this.positionX-- * 2 + '%';
+                    this.diverElement.style.left = this.positionX-- * 3 + '%';
                     break;
                 case ' ':
                 case 'ArrowDown':
-                    this.diverElement.style.top = this.positionY++ * 2 + '%';
+                    this.diverElement.style.top = this.positionY++ * 3 + '%';
                     break;
                 case 'ArrowUp':
-                    this.diverElement.style.top = this.positionY-- * 2 + '%';
+                    this.diverElement.style.top = this.positionY-- * 3 + '%';
                     break;
             }
         });
@@ -147,8 +184,6 @@ class Diver {
 /* ----------------------------- OPPONENT CLASS ----------------------------- */
 class Opponent {
     constructor() {
-        this.width = 10;
-        this.height = 10;
         this.positionX = 100;
         this.positionY = Math.floor(Math.random() * 90);
         this.opponentElement = null;
@@ -157,14 +192,69 @@ class Opponent {
     // create a new opponent
     createOpponent(typeOpponent) {
         const board = document.getElementById('game-board');
-        this.opponentElement = document.createElement('div');
+        this.opponentElement = document.createElement('img');
         this.opponentElement.className = typeOpponent;
+        switch (this.opponentElement.className) {
+            case 'fish1':
+                this.opponentElement.src = './resources/images/fish1.png';
+                this.opponentElement.style.width = 3 + 'vw';
+                this.opponentElement.style.zIndex = 1;
+                break;
+            case 'fish2':
+                this.opponentElement.src = './resources/images/fish2.png';
+                this.opponentElement.style.width = 3 + 'vw';
+                this.opponentElement.style.zIndex = 1;
+                break;
+            case 'fish3':
+                this.opponentElement.src = './resources/images/fish3.png';
+                this.opponentElement.style.width = 2 + 'vw';
+                this.opponentElement.style.zIndex = 2;
+                break;
+            case 'fish4':
+                this.opponentElement.src = './resources/images/fish4.png';
+                this.opponentElement.style.width = 3 + 'vw';
+                this.opponentElement.style.zIndex = 1;
+                break;
+            case 'fish5':
+                this.opponentElement.src = './resources/images/fish5.png';
+                this.opponentElement.style.width = 3 + 'vw';
+                this.opponentElement.style.zIndex = 1;
+                break;
+            case 'fish5':
+                this.opponentElement.src = './resources/images/fish5.png';
+                this.opponentElement.style.width = 3 + 'vw';
+                this.opponentElement.style.zIndex = 1;
+                break;
+            case 'shark1':
+                this.opponentElement.src = './resources/images/shark1.png';
+                this.opponentElement.style.width = 10 + 'vw';
+                this.opponentElement.style.zIndex = 2;
+                break;
+            case 'shark2':
+                this.opponentElement.src = './resources/images/shark2.png';
+                this.opponentElement.style.width = 10 + 'vw';
+                this.opponentElement.style.zIndex = 2;
+                break;
+            case 'trash1':
+                this.opponentElement.src = './resources/images/trash1.png';
+                this.opponentElement.style.width = 5 + 'vw';
+                this.opponentElement.style.zIndex = 1;
+                break;
+            case 'trash2':
+                this.opponentElement.src = './resources/images/trash2.png';
+                this.opponentElement.style.width = 5 + 'vw';
+                this.opponentElement.style.zIndex = 1;
+                break;
+            case 'trash3':
+                this.opponentElement.src = './resources/images/trash3.png';
+                this.opponentElement.style.width = 5 + 'vw';
+                this.opponentElement.style.zIndex = 1;
+                break;
+        }
         board.appendChild(this.opponentElement);
     }
     // add size and position to opponents
     showOpponent() {
-        this.opponentElement.style.width = this.width + '%';
-        this.opponentElement.style.height = this.height + '%';
         this.opponentElement.style.left = this.positionX + '%';
         this.opponentElement.style.top = this.positionY + '%';
     }
@@ -172,7 +262,8 @@ class Opponent {
     moveOpponent() {
         this.positionX--;
         this.opponentElement.style.left = this.positionX;
-        setInterval(() => {
+        if (this.opponentElement.className == 'shark1' || this.opponentElement.className == 'shark2'){
+            setInterval(() => {
             if (this.counter % 2 === 0) {
                 this.positionY += 1;
             } else {
@@ -180,5 +271,6 @@ class Opponent {
             }
             this.counter++;
         }, 1000);
+    }
     }
 }
