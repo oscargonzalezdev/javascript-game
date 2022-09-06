@@ -1,61 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>The Good Diver - JavaScript Game developed by Oscar Gonzalez</title>
     <!-- load styles-->
-    <link rel="stylesheet" href="./styles/reset.css">
-    <link rel="stylesheet" href="./styles/styles.css">
-</head>
-<body>
+    <link rel="stylesheet" href="./styles/reset.css" />
+    <link rel="stylesheet" href="./styles/styles.css" />
+  </head>
+  <body>
     <!-- displayer -->
     <div id="container">
-        <section id="displayer">
-            <div>
-                <h3 id="score">SCORE:</h3>
-            </div>
-            <div>
-                <h3 id="level">LEVEL:</h3>
-            </div>
-            <div>
-                <h3 id="health">HEALTH:</h3>
-            </div>
-            <div>
-                <h3 id="trash">OCEAN TRASH:</h3>
-            </div>
-        </section>
-
-        <!-- message boxes -->
-        <section class="messageBox" id="startBox">
-            <h1>WELCOME</h1>
-            <p>your next mission is to collect ocean trash avoiding the sharks.<br><br>Use the arrows keys to move. Good luck!</p>
-                <div class="flex-row">
-                <img src="./resources/images/keys.png" alt="keys">
-            <button class="btn" id="button" onclick="playGame()">PLAY</button>
+      <section id="displayer">
+        <div>
+          <h3 id="score">SCORE:</h3>
         </div>
-        </section>
-        <section class="messageBox" id="gameOver">
+        <div>
+          <h3 id="level">LEVEL:</h3>
+        </div>
+        <div>
+          <h3 id="health">HEALTH:</h3>
+        </div>
+        <div>
+          <h3 id="trash">OCEAN TRASH:</h3>
+        </div>
+      </section>
+
+      <!-- message boxes -->
+      <section class="messageBox" id="startBox">
+        <h1>WELCOME</h1>
+        <p>
+          Your next mission is to collect as much trash from the ocean as
+          possible. <br />
+          But beware of sharks!<br /><br />Use the arrow keys to move around.
+          Good luck!
+        </p>
+        <div class="flex-row">
+          <img src="./resources/images/keys.png" alt="keys" />
+          <button class="btn-24" onclick="playGame()">PLAY</button>
+        </div>
+      </section>
+      <section class="messageBox" id="gameOver">
+        <div class="flex-row">
+          <img src="./resources/images/shark-winner.png" alt="shark" />
+          <div>
             <h1>GAME OVER</h1>
-            <div class="flex-row">
-            <img src="./resources/images/shark-winner.png" alt="shark">
-            <div>
-            <p>the sharks have won this battle but you will win the war!</p>
-            <button class="btn" id="button" onclick="tryAgain()">TRY AGAIN</button>
+            <p>
+              Oops! The sharks were hungry...<br />
+              Please try again, the ocean needs you :)
+            </p>
+            <button class="btn-24" onclick="tryAgain()">TRY AGAIN</button>
+          </div>
         </div>
-    </div>
-        </section>
+      </section>
 
-        <!-- game elements -->
-        <div id="game-board">
-            <h1>The Good Diver</h1>
-        </div>
+      <!-- game elements -->
+      <div id="game-board">
+        <h1 id="logo">The Good Diver</h1>
+      </div>
     </div>
-
+    <footer>
+      <p>
+        Made with 🤍 by
+        <a
+          href="http://oscargonzalez.dev"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Oscar Gonzalez</a
+        >
+      </p>
+    </footer>
     <!-- load JavaScript code -->
     <script src="./src/logic.js"></script>
     <script src="./src/index.js"></script>
-</body>
-
+  </body>
 </html>
