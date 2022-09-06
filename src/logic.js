@@ -46,12 +46,12 @@ class Game {
                 newOpponent.createOpponent('fish5');
                 this.opponentsArray.push(newOpponent);
             }
-            if (this.counter % 55 === 0) {
+            if (this.counter % 25 === 0) {
                 const newOpponent = new Opponent();
                 newOpponent.createOpponent('shark1');
                 this.opponentsArray.push(newOpponent);
             }
-            if (this.counter % 105 === 0) {
+            if (this.counter % 55 === 0) {
                 const newOpponent = new Opponent();
                 newOpponent.createOpponent('shark2');
                 this.opponentsArray.push(newOpponent);
@@ -85,7 +85,7 @@ class Game {
             });
 
             this.counter++;
-        }, 100);
+        }, 60);
     }
 
     // detects collisions between diver and opponents
