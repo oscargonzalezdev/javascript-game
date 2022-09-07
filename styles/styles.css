@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Play&display=swap');
 
 html {
-    font-size: 12px;
-    font-family: 'Play', sans-serif;
+  font-size: 12px;
+  font-family: 'Play', sans-serif;
 }
 
 a {
@@ -14,75 +14,68 @@ a:hover {
   text-decoration: underline;
 }
 
-#container {
-    background: #000;
-    height: 100vh;
-}
 
 h1 {
-    font-size: 2.4rem;
+  font-size: 2.4rem;
 }
 
 h2 {
-    font-size: 1.7rem;
+  font-size: 1.7rem;
 }
 
 p {
-    font-size: 1.2rem;
+  font-size: 1.2rem;
 }
 
 #logo {
-    text-align: center;
-    padding-top: 20px;
-    color: #ffad5b;
-    font-weight: bold;
-    margin: 0;
-    padding: 30px;
-    text-shadow: 1px 1px 1px rgb(0,0,0);
-    text-align: center;
+  text-align: center;
+  padding-top: 20px;
+  color: #ffad5b;
+  font-weight: bold;
+  margin: 0;
+  padding: 30px;
+  text-shadow: 1px 1px 1px rgb(0, 0, 0);
+  text-align: center;
 }
 
 .finalScore {
-    font-size: 3.5rem;
+  font-size: 3.5rem;
 }
 
 #game-board {
-    background-image: url('../resources/images/background.png');
-    background-repeat: repeat-x;
-    background-size: cover;
-    position: absolute;
-    height: calc(100% - 10px);
-    width: calc(100% - 10px);
-    border-radius: 10px;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    margin: auto;
-    animation: ocean 50s linear infinite;
+  background-image: url('../resources/images/background.png');
+  background-repeat: repeat-x;
+  background-size: cover;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  animation: ocean 50s linear infinite;
 }
 
 #displayer {
-    text-align: right;
-    float: right;
-    position: relative;
-    z-index: 2;
-    padding: 30px;
+  text-align: right;
+  float: right;
+  position: relative;
+  z-index: 2;
+  padding: 30px;
 }
 
-#displayer > * {
-    padding-bottom: 10px;
+#displayer>* {
+  padding-bottom: 10px;
 }
 
 .diver {
-    position: absolute;
-    z-index: 2;
+  position: absolute;
+  z-index: 2;
 }
 
 .diverLeft {
-    position: absolute;
-    z-index: 2;
-    transform: scale(-1, 1);
+  position: absolute;
+  z-index: 2;
+  transform: scale(-1, 1);
 }
 
 .fish1,
@@ -95,61 +88,62 @@ p {
 .trash1,
 .trash2,
 .trash3 {
-    position: absolute;
+  position: absolute;
 }
 
 .trash1,
 .trash2,
 .trash3 {
-    animation: rotation 5s linear infinite;
-    -webkit-filter: drop-shadow(0mm -4mm 4mm purple) brightness(1);
-    filter: drop-shadow(0mm -4mm 4mm purple) brightness(1);
-    z-index: -1;
+  animation: rotation 5s linear infinite;
+  -webkit-filter: drop-shadow(0mm -4mm 4mm purple) brightness(1);
+  filter: drop-shadow(0mm -4mm 4mm purple) brightness(1);
+  z-index: -1;
 }
 
 #startBox img {
-    height: 80px;
-    object-fit: contain;
+  height: 80px;
+  object-fit: contain;
 }
 
 .flex-row {
-    display: flex;
-    width: 100%;
-    align-items: center;
-    justify-content: space-evenly;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-evenly;
 }
 
 .messageBox {
-    padding: 20px;
-    display: block;
-    background-color: black;
-    color: rgb(134, 233, 255);
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 5px;
-    text-align: center;
-    line-height: 1.5;
-    box-shadow: rgb(0, 0, 0) 0px 0px 5px 0px;
+  padding: 20px;
+  display: block;
+  background-color: black;
+  color: rgb(134, 233, 255);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 5px;
+  text-align: center;
+  line-height: 1.5;
+  box-shadow: rgb(0, 0, 0) 0px 0px 5px 0px;
 }
 
-.messageBox > p, .messageBox div > p {
-    margin: 20px;
-    color: rgb(221, 254, 255);
+.messageBox>p,
+.messageBox div>p {
+  margin: 20px;
+  color: rgb(221, 254, 255);
 }
 
 #gameOver {
-    z-index: 4;
-    display: none;
+  z-index: 4;
+  display: none;
 }
 
 #startBox {
-    z-index: 4;
+  z-index: 4;
 }
 
 #gameOver img {
-    max-width: 150px;
+  max-width: 150px;
 }
 
 .btn-24,
@@ -161,6 +155,7 @@ p {
   border: 0 solid;
   box-sizing: border-box;
 }
+
 .btn-24 {
   -webkit-tap-highlight-color: transparent;
   -webkit-appearance: button;
@@ -178,9 +173,11 @@ p {
   padding: 0;
   text-transform: uppercase;
 }
+
 .btn-24:disabled {
   cursor: default;
 }
+
 .btn-24:-moz-focusring {
   outline: auto;
 }
@@ -188,6 +185,7 @@ p {
 .btn-24 [hidden] {
   display: none;
 }
+
 .btn-24 {
   --background: #000;
   background: none;
@@ -195,11 +193,13 @@ p {
   padding: 0.8rem 3rem;
   position: relative;
 }
+
 .btn-24 span {
   display: block;
   position: relative;
   transition: transform 0.2s ease;
 }
+
 .btn-24:after,
 .btn-24:before {
   --tilt: 20px;
@@ -218,6 +218,7 @@ p {
   width: 100%;
   z-index: -1;
 }
+
 .btn-24:after {
   --thickness: 5px;
   background: var(--background);
@@ -226,25 +227,23 @@ p {
   top: var(--thickness);
   width: calc(100% - var(--thickness) * 2);
 }
+
 .btn-24:hover span {
   transform: translateX(-20px);
 }
+
 .btn-24:hover:after,
 .btn-24:hover:before {
-  -webkit-clip-path: polygon(
-    0 0,
-    calc(100% - var(--tilt)) 0,
-    100% 50%,
-    calc(100% - var(--tilt)) 100%,
-    0 100%
-  );
-  clip-path: polygon(
-    0 0,
-    calc(100% - var(--tilt)) 0,
-    100% 50%,
-    calc(100% - var(--tilt)) 100%,
-    0 100%
-  );
+  -webkit-clip-path: polygon(0 0,
+      calc(100% - var(--tilt)) 0,
+      100% 50%,
+      calc(100% - var(--tilt)) 100%,
+      0 100%);
+  clip-path: polygon(0 0,
+      calc(100% - var(--tilt)) 0,
+      100% 50%,
+      calc(100% - var(--tilt)) 100%,
+      0 100%);
 }
 
 footer {
@@ -262,30 +261,30 @@ footer p {
 }
 
 @keyframes ocean {
-    to {
-        background-position: 100% 2000%;
-    }
+  to {
+    background-position: 100% 2000%;
+  }
 }
 
 @keyframes rotation {
-    from {
-        transform: rotate(0deg);
-    }
+  from {
+    transform: rotate(0deg);
+  }
 
-    to {
-        transform: rotate(360deg);
-    }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @media screen and (min-width: 300px) and (max-width: 500px) and (orientation: portrait) {
-    body {
-        transform: rotate(-90deg);
-        transform-origin: left top;
-        width: 100vh;
-        height: 100vw;
-        overflow-x: hidden;
-        position: absolute;
-        top: 100%;
-        left: 0;
-    }
+  body {
+    width: 100vmax;
+    height: 100vmin;
+    transform: rotate(-90deg);
+    transform-origin: left top;
+    overflow-x: hidden;
+    position: absolute;
+    top: 100%;
+    left: 0;
+  }
 }
