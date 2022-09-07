@@ -6,7 +6,7 @@ html {
 }
 
 #container {
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   background-image: url('../resources/images/background.png');
   background-repeat: repeat-x;
@@ -290,12 +290,17 @@ footer p {
     width: 100vh;
   }
 
+  #container {
+    width: 100%;
+    height: 100%;
+  }
+
   #game-board {
-    width: 80%;
+    width: 90%;
     margin: auto;
   }
 
   #displayer {
-    width: 70%;
+    width: 80%;
   }
 }
