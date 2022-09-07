@@ -13,6 +13,7 @@ class Game {
     play() {
         this.diver.showDiver();
         this.diver.moveDiver();
+        this.diver.moveUp();
         this.setup();
         backgroundSound.play();
         welcomeSound.pause();
@@ -70,11 +71,11 @@ class Game {
                 const newOpponent = new Opponent();
                 newOpponent.createOpponent('trash3');
                 this.opponentsArray.push(newOpponent);
-            }            
+            }
             // update values on displayer
             scoreChild.innerHTML = this.score;
             trashChild.innerHTML = this.trash;
-            healthChild.innerHTML = this.health +' %';
+            healthChild.innerHTML = this.health + ' %';
 
             // move and show oponents
             this.opponentsArray.forEach(opponent => {
@@ -99,8 +100,8 @@ class Game {
             switch (opponent.opponentElement.className) {
                 case 'shark1':
                 case 'shark2':
-                    if(this.health > 0){
-                        this.health -=4;
+                    if (this.health > 0) {
+                        this.health -= 4;
                         sharkSound.play();
                     } else {
                         gameOver();
@@ -164,31 +165,59 @@ class Diver {
         window.addEventListener('keydown', (e) => {
             switch (e.key) {
                 case 'ArrowRight':
-                    if(this.diverElement.style.left < '90%'){
+                    if (this.diverElement.style.left < '90%') {
                         this.diverElement.className = 'diver';
                         this.diverElement.style.left = this.positionX++ * 3 + '%';
                     }
                     break;
                 case 'ArrowLeft':
-                    if(this.diverElement.style.left > '0%'){
-                    this.diverElement.className = 'diverLeft';
-                    this.diverElement.style.left = this.positionX-- * 3 + '%';
+                    if (this.diverElement.style.left > '0%') {
+                        this.diverElement.className = 'diverLeft';
+                        this.diverElement.style.left = this.positionX-- * 3 + '%';
                     }
                     break;
-                case ' ':
                 case 'ArrowDown':
-                    
-                    if(this.diverElement.style.top < '90%'){
-                    this.diverElement.style.top = this.positionY++ * 3 + '%';
+                    if (this.diverElement.style.top < '90%') {
+                        this.diverElement.style.top = this.positionY++ * 3 + '%';
                     }
                     break;
                 case 'ArrowUp':
-                    if(this.diverElement.style.top > '0%'){
-                    this.diverElement.style.top = this.positionY-- * 3 + '%';
+                    if (this.diverElement.style.top > '0%') {
+                        this.diverElement.style.top = this.positionY-- * 3 + '%';
                     }
                     break;
             }
         });
+    }
+
+    moveUp() {
+        const arrowUp = document.querySelector('.arrow-up')
+        const arrowDown = document.querySelector('.arrow-down')
+        const arrowLeft = document.querySelector('.arrow-left')
+        const arrowRight = document.querySelector('.arrow-right')
+
+        arrowUp.addEventListener('click', () => {
+            if (this.diverElement.style.top > '0%') {
+                this.diverElement.style.top = this.positionY-- * 3 + '%';
+            }
+        })
+        arrowDown.addEventListener('click', () => {
+            if (this.diverElement.style.top < '90%') {
+                this.diverElement.style.top = this.positionY++ * 3 + '%';
+            }
+        })
+        arrowLeft.addEventListener('click', () => {
+            if (this.diverElement.style.left > '0%') {
+                this.diverElement.className = 'diverLeft';
+                this.diverElement.style.left = this.positionX-- * 3 + '%';
+            }
+        })
+        arrowRight.addEventListener('click', () => {
+            if (this.diverElement.style.left < '90%') {
+                this.diverElement.className = 'diver';
+                this.diverElement.style.left = this.positionX++ * 3 + '%';
+            }
+        })
     }
 }
 
@@ -273,15 +302,15 @@ class Opponent {
     moveOpponent() {
         this.positionX--;
         this.opponentElement.style.left = this.positionX;
-        if (this.opponentElement.className == 'shark1' || this.opponentElement.className == 'shark2'){
+        if (this.opponentElement.className == 'shark1' || this.opponentElement.className == 'shark2') {
             setInterval(() => {
-            if (this.counter % 2 === 0) {
-                this.positionY += 1;
-            } else {
-                this.positionY -= 1;
-            }
-            this.counter++;
-        }, 1000);
-    }
+                if (this.counter % 2 === 0) {
+                    this.positionY += 1;
+                } else {
+                    this.positionY -= 1;
+                }
+                this.counter++;
+            }, 1000);
+        }
     }
 }

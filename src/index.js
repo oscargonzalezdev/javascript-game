@@ -1,6 +1,6 @@
 /* ----------------------------- SOUNDS ----------------------------- */
-const backgroundSound  = new Audio('./resources/sounds/ambient.mp3');
-const welcomeSound = new Audio ('./resources/sounds/welcome.ogg');
+const backgroundSound = new Audio('./resources/sounds/ambient.mp3');
+const welcomeSound = new Audio('./resources/sounds/welcome.ogg');
 const fishSound = new Audio('./resources/sounds/fish.wav');
 const trashSound = new Audio('./resources/sounds/trash.wav');
 const sharkSound = new Audio('./resources/sounds/shark.wav');
@@ -41,20 +41,24 @@ function startBox() {
 }
 
 // play game button
-function playGame(){
+function playGame() {
+    const controls = document.querySelector('.controls')
     const startBox = document.getElementById('startBox');
     startBox.style.display = 'none';
+    controls.style.display = 'flex'
     game.play();
 }
 
 // show game over box
-function gameOver(){
+function gameOver() {
+    const controls = document.querySelector('.controls')
+    controls.style.display = 'none'
     clearInterval(game.gameInterval);
     const gameOver = document.getElementById('gameOver');
     gameOver.style.display = 'block';
 }
 
 // realoads the website
-function tryAgain(){
+function tryAgain() {
     window.location.reload();
 }
