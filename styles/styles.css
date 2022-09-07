@@ -5,6 +5,11 @@ html {
   font-family: 'Play', sans-serif;
 }
 
+#container {
+  width: 100%;
+  height: 100%;
+}
+
 a {
   text-decoration: none;
   color: inherit;
@@ -29,7 +34,6 @@ p {
 
 #logo {
   text-align: center;
-  padding-top: 20px;
   color: #ffad5b;
   font-weight: bold;
   margin: 0;
@@ -249,7 +253,7 @@ p {
 footer {
   color: rgb(221, 254, 255);
   position: absolute;
-  bottom: 20px;
+  bottom: 15px;
   width: 100%;
   text-align: center;
   margin: auto;
@@ -257,7 +261,7 @@ footer {
 }
 
 footer p {
-  font-size: 1rem;
+  font-size: 0.9em;
 }
 
 @keyframes ocean {
@@ -278,13 +282,11 @@ footer p {
 
 @media screen and (min-width: 300px) and (max-width: 500px) and (orientation: portrait) {
   body {
-    width: 100vmax;
-    height: 100vmin;
-    transform: rotate(-90deg);
-    transform-origin: left top;
-    overflow-x: hidden;
-    position: absolute;
-    top: 100%;
-    left: 0;
+    transform: rotate(90deg) translateY(-100%);
+    transform-origin: top left;
+    overflow: hidden;
+    margin: 0;
+    height: 100vw;
+    width: 100vh;
   }
 }
