@@ -7,7 +7,11 @@ html {
 
 #container {
   width: 100%;
-  height: 100%;
+  height: 100vh;
+  background-image: url('../resources/images/background.png');
+  background-repeat: repeat-x;
+  background-size: cover;
+  animation: ocean 50s linear infinite;
 }
 
 a {
@@ -47,24 +51,21 @@ p {
 }
 
 #game-board {
-  background-image: url('../resources/images/background.png');
-  background-repeat: repeat-x;
-  background-size: cover;
   position: absolute;
   left: 0;
   right: 0;
   top: 0;
   bottom: 0;
-  margin: auto;
-  animation: ocean 50s linear infinite;
+
 }
 
 #displayer {
-  text-align: right;
-  float: right;
+  width: 100%;
   position: relative;
-  z-index: 2;
   padding: 30px;
+  z-index: 1;
+  margin: auto;
+  text-align: right;
 }
 
 #displayer>* {
@@ -285,8 +286,16 @@ footer p {
     transform: rotate(90deg) translateY(-100%);
     transform-origin: top left;
     overflow: hidden;
-    margin: 0;
     height: 100vw;
     width: 100vh;
+  }
+
+  #game-board {
+    width: 80%;
+    margin: auto;
+  }
+
+  #displayer {
+    width: 70%;
   }
 }
